@@ -40,6 +40,16 @@ class Leave(webapp2.RequestHandler):
         template = env.get_template("templates/leave.html")
         self.response.write(template.render())
 
+class Email(webapp2.RequestHandler):
+    def get(self): #for a get request
+        template = env.get_template("templates/email.html")
+        self.response.write(template.render()) #the response
+
+class Ignore(webapp2.RequestHandler):
+    def get(self): #for a get request
+        template = env.get_template("templates/ignore.html")
+        self.response.write(template.render()) #the response
+
 app = webapp2.WSGIApplication([
     ('/', MainPage), #this maps the root url to the Main Page Handler
     ('/jumpin', JumpIn),
@@ -48,4 +58,6 @@ app = webapp2.WSGIApplication([
     ('/reject', Reject),
     ('/save', Save),
     ('/leave', Leave),
+    ('/email', Email),
+    ('/ignore', Ignore),
 ], debug=True)
